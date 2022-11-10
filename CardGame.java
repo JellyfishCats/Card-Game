@@ -7,7 +7,17 @@ public class CardGame {
       Scanner console = new Scanner(System.in);      
       Board mainBoard = new Board(5); //Creates a board Object
       System.out.println("Game Size 1, 2, or 3?");
-      int size = console.nextInt();
+      int size = 1;
+      boolean isValid = false;
+      while (isValid == false){
+         if(console.hasNextInt() == false){ //Checks if the entered size is a integer
+            System.out.println("Please enter a valid character");
+            console.next();
+         } else {
+            size = console.nextInt();
+            isValid = true;
+         }
+      } 
       DrawingPanel panel = new DrawingPanel(500, 500); //Creates the drawing panel that serves as the board
       mainBoard.updateBoard(panel, size);
       System.out.println("Game length Short, Medium, or Long?");
